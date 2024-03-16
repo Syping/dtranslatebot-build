@@ -1,0 +1,8 @@
+FROM rockylinux:9
+
+RUN dnf install -y annobin cmake make gcc-c++ git perl perl-IPC-Cmd rpmdevtools rpmlint systemd-rpm-macros && \
+    dnf clean all
+RUN useradd -m -s /bin/bash -U rpmbuild
+USER rpmbuild
+WORKDIR /home/rpmbuild
+RUN rpmdev-setuptree

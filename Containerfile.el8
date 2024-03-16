@@ -1,0 +1,11 @@
+FROM rockylinux:8
+
+RUN dnf install -y 'dnf-command(config-manager)' && \
+    dnf config-manager --set-enabled powertools && \
+    dnf install -y epel-release && \
+    dnf install -y cmake epel-rpm-macros-systemd make gcc-toolset-9-annobin gcc-toolset-9-gcc-c++ git perl perl-IPC-Cmd rpmdevtools rpmlint systemd-rpm-macros && \
+    dnf clean all
+RUN useradd -m -s /bin/bash -U rpmbuild
+USER rpmbuild
+WORKDIR /home/rpmbuild
+RUN rpmdev-setuptree
