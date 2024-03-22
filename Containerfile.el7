@@ -1,7 +1,6 @@
 FROM centos:7
-
 RUN yum install -y centos-release-scl epel-release && \
-    yum install -y cmake3 epel-rpm-macros-systemd make devtoolset-9-annobin devtoolset-9-gcc-c++ git perl perl-IPC-Cmd rpmdevtools rpmlint systemd-rpm-macros && \
+    yum install -y cmake3 epel-rpm-macros-systemd make devtoolset-9-annobin devtoolset-9-gcc-c++ git perl 'perl(IPC::Cmd)' rpmdevtools rpmlint systemd-rpm-macros && \
     yum clean all
 RUN useradd -m -s /bin/bash -U rpmbuild
 USER rpmbuild
