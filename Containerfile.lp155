@@ -1,6 +1,6 @@
 FROM opensuse/leap:15.5
 RUN zypper install -y cmake make gcc9-c++ git perl 'perl(IPC::Cmd)' rpmdevtools rpmlint systemd-rpm-macros system-user-mail && \
-    zypper clean
+    zypper clean -a
 RUN useradd -m -s /bin/bash -U rpmbuild
 USER rpmbuild
 WORKDIR /home/rpmbuild
